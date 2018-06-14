@@ -16,7 +16,7 @@ module.exports = env => {
     const appComponents = [
         "tns-core-modules/ui/frame",
         "tns-core-modules/ui/frame/activity",
-        resolve(__dirname, "app/activity.android.ts"),
+        "./activity.android.ts",
     ];
 
     const platform = env && (env.android && "android" || env.ios && "ios");
@@ -51,7 +51,7 @@ module.exports = env => {
     const appResourcesFullPath = resolve(projectRoot, appResourcesPath);
 
     const entryModule = aot ?
-        nsWebpack.getAotEntryModule(appFullPath) : 
+        nsWebpack.getAotEntryModule(appFullPath) :
         `${nsWebpack.getEntryModule(appFullPath)}.ts`;
     const entryPath = `.${sep}${entryModule}`;
 
