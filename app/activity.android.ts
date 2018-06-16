@@ -1,14 +1,14 @@
 import {setActivityCallbacks, AndroidActivityCallbacks} from "ui/frame";
 
 @JavaProxy("org.myApp.MainActivity")
-class Activity extends android.app.Activity {
+class Activity extends android.support.v7.app.AppCompatActivity {
     private _callbacks: AndroidActivityCallbacks;
 
     protected onCreate(savedInstanceState: android.os.Bundle): void {
         if (!this._callbacks) {
             setActivityCallbacks(this);
         }
-
+        console.log("onCreate");
         this._callbacks.onCreate(this, savedInstanceState, super.onCreate);
     }
 
