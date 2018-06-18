@@ -1,7 +1,7 @@
 import {setActivityCallbacks, AndroidActivityCallbacks} from "ui/frame";
 
 @JavaProxy("org.myApp.MainActivity")
-class Activity extends android.support.v7.app.AppCompatActivity {
+export class Activity extends android.support.v7.app.AppCompatActivity {
     private _callbacks: AndroidActivityCallbacks;
 
     protected onCreate(savedInstanceState: android.os.Bundle): void {
@@ -38,5 +38,9 @@ class Activity extends android.support.v7.app.AppCompatActivity {
 
     protected onActivityResult(requestCode: number, resultCode: number, data: android.content.Intent): void {
         this._callbacks.onActivityResult(this, requestCode, resultCode, data, super.onActivityResult);
+    }
+
+    public log(msg: string): void {
+        console.log(msg);
     }
 }
